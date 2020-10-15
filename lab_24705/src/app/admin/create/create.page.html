@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="addnew(form)">
+    <ion-list>
+
+      <ion-item>
+        <ion-label>URL Foto</ion-label>
+        <ion-input placeholder="Insert URL here" ngModel inputmode="text" name="foto" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Jenis</ion-label>
+        <ion-select value="cpu" ngModel name="jenis" #jenisCtrl="ngModel" required>
+          <ion-select-option value="cpu">CPU</ion-select-option>
+          <ion-select-option value="ram">RAM</ion-select-option>
+          <ion-select-option value="motherboard">Motherboard</ion-select-option>
+          <ion-select-option value="gpu">GPU</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Merek</ion-label>
+        <ion-input placeholder="Merek" inputmode="text" ngModel name="merek" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Model</ion-label>
+        <ion-input placeholder="Model" inputmode="text" ngModel name="model" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Harga</ion-label>
+        <ion-input placeholder="Harga" inputmode="numeric" ngModel name="harga" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Stok</ion-label>
+        <ion-input placeholder="Stok" inputmode="numeric" ngModel name="stok" required></ion-input>
+      </ion-item>
+
+      <ion-label>Detail Produk</ion-label>
+
+      <ion-item *ngIf="jenisCtrl.value == 'cpu'">
+        <ion-label>Base Clock</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="base" required></ion-input> Ghz
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'cpu'">
+        <ion-label>Boost Clock</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="boost" required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'cpu'">
+        <ion-label>Jumlah Core</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="core" required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'cpu'">
+        <ion-label>Jumlah Thread</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="thread" required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'ram'">
+        <ion-label>Speed</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="speed" required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'ram'">
+        <ion-label>Ukuran</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="ukuran" required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'motherboard'">
+        <ion-label>Chipset</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="chipset" required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="jenisCtrl.value == 'motherboard'">
+        <ion-label>Target Processor</ion-label>
+        <ion-input value=null inputmode="numeric" ngModel name="processor" required></ion-input>
+      </ion-item>
+
+
+  </ion-list>
+
+  <ion-button type="submit" [disabled]="!form.valid" [routerLink]="['/admin']">Submit</ion-button>
+  </form>
+</ion-content>
